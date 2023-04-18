@@ -17,7 +17,6 @@ class Events {
     required this.vanue,
   });
 
-  factory Events.fromJson(Map<String, dynamic> json) =>
-      _$EventsDataFromJson(json);
-  Map<String, dynamic> toJson() => _$EventsDataToJson(this);
+  factory Events.fromJson(Map<String, dynamic> json) => _$EventsFromJson(json);
+  Map<String, dynamic> toJson() => _$EventsToJson(this);
 }
