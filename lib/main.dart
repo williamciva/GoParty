@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_party/repository/view/Home.dart';
+
+import 'conf/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      routes: {
-        '/': (context) => const Home(),
-      },
+      routes: routesOfApp,
       debugShowCheckedModeBanner: false,
     );
   }
