@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:go_party/repository/api/Api.dart';
+import 'package:go_party/repository/api/Seatgeek.dart';
 import 'package:go_party/repository/model/ResponseData.dart';
+import 'package:go_party/repository/model/events/Event.dart';
 import 'package:go_party/repository/model/events/Meta.dart';
+
+import 'package:go_party/conf/routes.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,20 +15,16 @@ class Home extends StatefulWidget {
 }
 
 FutureBuilder<ResponseData> _listEvents() {
-  final ApiClient client =
-      ApiClient(Dio(BaseOptions(contentType: "application/json")));
+  final SeatgeekClient client =
+      SeatgeekClient(Dio(BaseOptions(contentType: "application/json")));
   return FutureBuilder<ResponseData>(
-    future: client.getEventsConcert(
-      client_id: "MzMwODUzNTV8MTY4MTU1NzgzNi4zNDgwNDE1",
-      type: "concert",
-    ),
+    future: client.getEventsConcert(),
     builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.done) {
         final ResponseData? posts = snapshot.data;
         if (posts != null) {
           return _buildListView(context, posts);
-        } else{
-          print(snapshot.stackTrace);
+        } else {
           return ListView();
         }
       } else {
@@ -40,18 +39,28 @@ FutureBuilder<ResponseData> _listEvents() {
 Widget _buildListView(BuildContext context, ResponseData posts) {
   return ListView.builder(
     itemBuilder: (context, index) {
+      Event event = posts.events[index];
+
       return Card(
         child: ListTile(
           leading: const Icon(
-            Icons.account_box,
-            color: Colors.green,
-            size: 50,
+            Icons.map,
+            color: Colors.deepPurple,
+            size: 40,
           ),
           title: Text(
-            posts.events[index].venue.name,
-            style: const TextStyle(fontSize: 20),
+            event.title,
+            style: const TextStyle(fontSize: 18),
           ),
-          subtitle: Text(posts.events[index].id.toString()),
+          subtitle: Text(
+              "${event.venue.address}, ${event.venue.city} - ${event.venue.country}"),
+          trailing: Text(event.performers.length > 1
+              ? "${event.performers[0].name}, more ${event.performers.length - 1} performers"
+              : event.performers[0].name),
+          onTap: () => Navigator.of(context).pushNamed(MAP_PAGE,
+              arguments: MapParams(
+                  lat: event.venue.location.lat,
+                  lon: event.venue.location.lon)),
         ),
       );
     },
@@ -62,6 +71,13 @@ Widget _buildListView(BuildContext context, ResponseData posts) {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return  _listEvents();
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 223, 221, 235),
+      appBar: AppBar(
+        title: const Text("Eventos"),
+        leading: const Icon(Icons.event),
+      ),
+      body: _listEvents(),
+    );
   }
 }

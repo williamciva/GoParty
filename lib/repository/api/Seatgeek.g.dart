@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Api.dart';
+part of 'Seatgeek.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'Api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _ApiClient implements ApiClient {
-  _ApiClient(
+class _SeatgeekClient implements SeatgeekClient {
+  _SeatgeekClient(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,7 +21,7 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<ResponseData> getEvents({required client_id}) async {
+  Future<ResponseData> getEvents() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -34,7 +34,7 @@ class _ApiClient implements ApiClient {
     )
             .compose(
               _dio.options,
-              '/events',
+              '/events?client_id=MzMwODUzNTV8MTY4MTU1NzgzNi4zNDgwNDE1',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -44,15 +44,9 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<ResponseData> getEventsConcert({
-    required client_id,
-    required type,
-  }) async {
+  Future<ResponseData> getEventsConcert() async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'client_id': client_id,
-      r'type': type,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -63,7 +57,7 @@ class _ApiClient implements ApiClient {
     )
             .compose(
               _dio.options,
-              '/events',
+              '/events?client_id=MzMwODUzNTV8MTY4MTU1NzgzNi4zNDgwNDE1&type=concert',
               queryParameters: queryParameters,
               data: _data,
             )

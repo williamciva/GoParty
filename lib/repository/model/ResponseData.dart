@@ -1,4 +1,4 @@
-import 'package:go_party/repository/model/events/Events.dart';
+import 'package:go_party/repository/model/events/Event.dart';
 import 'package:go_party/repository/model/events/Meta.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -7,7 +7,7 @@ part 'ResponseData.g.dart';
 @JsonSerializable()
 class ResponseData {
   Meta meta;
-  List<Events> events;
+  List<Event> events;
 
   ResponseData({required this.meta, required this.events});
 

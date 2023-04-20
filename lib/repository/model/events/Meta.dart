@@ -1,4 +1,4 @@
-import 'package:go_party/repository/model/events/Events.dart';
+import 'package:go_party/repository/model/events/Event.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'Meta.g.dart';

@@ -9,7 +9,7 @@ part of 'ResponseData.dart';
 ResponseData _$ResponseDataFromJson(Map<String, dynamic> json) => ResponseData(
       meta: Meta.fromJson(json['meta'] as Map<String, dynamic>),
       events: (json['events'] as List<dynamic>)
-          .map((e) => Events.fromJson(e as Map<String, dynamic>))
+          .map((e) => Event.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

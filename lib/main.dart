@@ -14,11 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GoParty',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepPurple,
       ),
       routes: routesOfApp,
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
