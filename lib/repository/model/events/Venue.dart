@@ -1,12 +1,10 @@
-import 'dart:ffi';
-
 import 'package:go_party/repository/model/events/Location.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Vanue.g.dart';
+part 'Venue.g.dart';
 
 @JsonSerializable()
-class Vanue {
+class Venue {
   String state;
   String name;
   String postal_code;
@@ -14,23 +12,23 @@ class Vanue {
   List<String> links;
   String timezone;
   String url;
-  Float score;
+  double score;
   Location location;
   String address;
   String country;
-  Bool has_upcoming_events;
-  Int num_upcoming_events;
+  bool has_upcoming_events;
+  int num_upcoming_events;
   String city;
   String slug;
   String extended_address;
-  Int id;
-  Int popularity;
-  Bool access_method;
-  Int metro_code;
-  Int capacity;
+  int id;
+  int popularity;
+  var access_method;
+  int metro_code;
+  int capacity;
   String display_location;
 
-  Vanue({
+  Venue({
     required this.state,
     required this.name,
     required this.postal_code,
@@ -55,6 +53,6 @@ class Vanue {
     required this.display_location,
   });
 
-  factory Vanue.fromJson(Map<String, dynamic> json) => _$VanueFromJson(json);
-  Map<String, dynamic> toJson() => _$VanueToJson(this);
+  factory Venue.fromJson(Map<String, dynamic> json) => _$VenueFromJson(json);
+  Map<String, dynamic> toJson() => _$VenueToJson(this);
 }

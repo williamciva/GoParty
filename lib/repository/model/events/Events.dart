@@ -1,4 +1,4 @@
-import 'package:go_party/repository/model/events/Vanue.dart';
+import 'package:go_party/repository/model/events/Venue.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'Events.g.dart';
@@ -6,15 +6,15 @@ part 'Events.g.dart';
 @JsonSerializable()
 class Events {
   String type;
-  BigInt id;
+  int id;
   String datetime_utc;
-  Vanue vanue;
+  Venue venue;
 
   Events({
     required this.type,
     required this.id,
     required this.datetime_utc,
-    required this.vanue,
+    required this.venue,
   });
 
   factory Events.fromJson(Map<String, dynamic> json) => _$EventsFromJson(json);

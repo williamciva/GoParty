@@ -8,14 +8,14 @@ part of 'Events.dart';
 
 Events _$EventsFromJson(Map<String, dynamic> json) => Events(
       type: json['type'] as String,
-      id: BigInt.parse(json['id'] as String),
+      id: json['id'] as int,
       datetime_utc: json['datetime_utc'] as String,
-      vanue: Vanue.fromJson(json['vanue'] as Map<String, dynamic>),
+      venue: Venue.fromJson(json['venue'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$EventsToJson(Events instance) => <String, dynamic>{
       'type': instance.type,
-      'id': instance.id.toString(),
+      'id': instance.id,
       'datetime_utc': instance.datetime_utc,
-      'vanue': instance.vanue,
+      'venue': instance.venue,
     };

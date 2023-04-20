@@ -10,5 +10,8 @@ abstract class ApiClient {
   factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
 
   @GET(Apis.events)
-  Future<ResponseData> getEvents();
+  Future<ResponseData> getEvents({required String client_id});
+
+    @GET(Apis.events)
+  Future<ResponseData> getEventsConcert({@Query("client_id") required String client_id, @Query("type") required String type});
 }
