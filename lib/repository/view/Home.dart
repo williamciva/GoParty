@@ -59,6 +59,8 @@ Widget _buildListView(BuildContext context, ResponseData posts) {
               : event.performers[0].name),
           onTap: () => Navigator.of(context).pushNamed(MAP_PAGE,
               arguments: MapParams(
+                  mapName: event.venue.name,
+                  address: event.venue.address,
                   lat: event.venue.location.lat,
                   lon: event.venue.location.lon)),
         ),

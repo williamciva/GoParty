@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:go_party/conf/routes.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
-class Map extends StatefulWidget {
-  const Map({super.key});
+class BingMapView extends StatefulWidget {
+  const BingMapView({super.key});
 
   @override
-  State<Map> createState() => _MapState();
+  State<BingMapView> createState() => _BingMapViewState();
 }
 
-class _MapState extends State<Map> {
+class _BingMapViewState extends State<BingMapView> {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as MapParams;
