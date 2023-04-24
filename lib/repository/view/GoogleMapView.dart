@@ -33,6 +33,13 @@ class _GoogleMapViewState extends State<GoogleMapView> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as MapParams;
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          BackButton(
+            onPressed: () => Navigator.pop(context),
+          )
+        ],
+      ),
       body: GoogleMap(
         initialCameraPosition:
             CameraPosition(target: LatLng(args.lat, args.lon), zoom: 15),
