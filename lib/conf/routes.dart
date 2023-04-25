@@ -1,5 +1,5 @@
 import 'package:go_party/repository/view/Home.dart';
-import 'package:go_party/repository/view/GoogleMapView.dart';
+import 'package:go_party/repository/view/GoogleMaps/GoogleMapView.dart';
 
 const String HOME_PAGE = '/';
 const String MAP_PAGE = '/map';
