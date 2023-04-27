@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:go_party/conf/routes.dart';
 import 'package:go_party/repository/view/GoogleMaps/GooglePolylines.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class GoogleMapView extends StatefulWidget {
   const GoogleMapView({super.key});
@@ -39,6 +40,12 @@ class _GoogleMapViewState extends State<GoogleMapView> {
     required double lon,
   }) async {
     try {
+      if (await Permission.location.serviceStatus.isDisabled) {
+        openAppSettings();
+      }
+    } catch (e) {}
+
+    try {
       Position atualPosition = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
       _markers['Current Location'] = Marker(
@@ -47,13 +54,20 @@ class _GoogleMapViewState extends State<GoogleMapView> {
       );
       print(
           '${atualPosition.latitude} / ${atualPosition.longitude} //// $lat / $lon');
-      await _polyLines.createPolylines(
+      _polyLines.createPolylines(
         atualPosition.latitude,
         atualPosition.longitude,
         lat,
         lon,
       );
-      setState(() {});
+      setState(() {
+        _polyLines.createPolylines(
+          atualPosition.latitude,
+          atualPosition.longitude,
+          lat,
+          lon,
+        );
+      });
     } catch (e) {
       print(e);
     }

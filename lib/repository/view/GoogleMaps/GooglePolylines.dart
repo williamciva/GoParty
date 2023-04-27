@@ -20,47 +20,39 @@ class GooglePolylines {
 
     // Generating the list of coordinates to be used for
     // drawing the polylines
+    PolylineResult result = PolylineResult(points: List.empty());
     try {
-      PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
+      result = await polylinePoints.getRouteBetweenCoordinates(
         'AIzaSyAGINbLPN0BXFI_60vzaA7_DBBFYDUemjc',
         PointLatLng(startLatitude, startLongitude),
         PointLatLng(destinationLatitude, destinationLongitude),
       );
+    } catch (e) {}
+    ;
 
-      // Adding the coordinates to the list
-      if (result.points.isNotEmpty) {
-        for (var point in result.points) {
-          polylineCoordinates.add(LatLng(point.latitude, point.longitude));
-        }
+    // Adding the coordinates to the list
+    if (result.points.isNotEmpty) {
+      for (var point in result.points) {
+        polylineCoordinates.add(LatLng(point.latitude, point.longitude));
       }
-
-      // Defining an ID
-      PolylineId id = const PolylineId('poly');
-
-      // Initializing Polyline
-      Polyline polyline = Polyline(
-        polylineId: id,
-        color: Colors.red,
-        points: polylineCoordinates,
-        width: 3,
-      );
-
-      // Adding the polyline to the map
-      polylines[id] = polyline;
-    } catch (e) {
+    } else {
       polylineCoordinates.add(LatLng(startLatitude, startLongitude));
       polylineCoordinates
           .add(LatLng(destinationLatitude, destinationLongitude));
-
-      PolylineId id = const PolylineId('poly');
-      Polyline polyline = Polyline(
-        polylineId: id,
-        color: Colors.red,
-        points: polylineCoordinates,
-        width: 3,
-      );
-
-      polylines[id] = polyline;
     }
+
+    // Defining an ID
+    PolylineId id = const PolylineId('poly');
+
+    // Initializing Polyline
+    Polyline polyline = Polyline(
+      polylineId: id,
+      color: Colors.red,
+      points: polylineCoordinates,
+      width: 3,
+    );
+
+    // Adding the polyline to the map
+    polylines[id] = polyline;
   }
 }
