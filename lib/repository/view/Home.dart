@@ -102,39 +102,6 @@ Widget _buildListView(BuildContext context, ResponseData posts) {
                 ),
               ],
             ),
-            // ListTile(
-            //   leading: const Icon(
-            //     Icons.map,
-            //     color: Colors.deepPurple,
-            //     size: 40,
-            //   ),
-            //   title:
-            //     Text(
-            //       event.title,
-            //       style: const TextStyle(fontSize: 18),
-            //       onPressed: () => _viewInfoEvent();
-            //     ),
-            //   subtitle: Text(
-            //     "${event.venue.address}, ${event.venue.city} - ${event.venue.country}"),
-            //   trailing: Row(
-            //     mainAxisSize: MainAxisSize.min,
-            //     children: [
-            //       const Text("Ver no Mapa"),
-            //       IconButton(
-            //         icon: const Icon(Icons.map),
-            //         onPressed: () => Navigator.of(context).pushNamed(
-            //           MAP_PAGE,
-            //           arguments: MapParams(
-            //             mapName: event.venue.name,
-            //             address: event.venue.address,
-            //             lat: event.venue.location.lat,
-            //             lon: event.venue.location.lon,
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       );
