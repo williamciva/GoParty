@@ -30,6 +30,7 @@ class GooglePolylines {
     } catch (e) {}
     ;
 
+    polylineCoordinates.clear();
     // Adding the coordinates to the list
     if (result.points.isNotEmpty) {
       for (var point in result.points) {

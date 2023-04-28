@@ -5,7 +5,7 @@ part 'Venue.g.dart';
 
 @JsonSerializable()
 class Venue {
-  String state;
+  var state;
   String name;
   String postal_code;
   String name_v2;

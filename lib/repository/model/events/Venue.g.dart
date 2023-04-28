@@ -7,7 +7,7 @@ part of 'Venue.dart';
 // **************************************************************************
 
 Venue _$VenueFromJson(Map<String, dynamic> json) => Venue(
-      state: json['state'] as String,
+      state: json['state'],
       name: json['name'] as String,
       postal_code: json['postal_code'] as String,
       name_v2: json['name_v2'] as String,

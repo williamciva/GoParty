@@ -52,8 +52,6 @@ class _GoogleMapViewState extends State<GoogleMapView> {
         markerId: const MarkerId('Current Location'),
         position: LatLng(atualPosition.latitude, atualPosition.longitude),
       );
-      print(
-          '${atualPosition.latitude} / ${atualPosition.longitude} //// $lat / $lon');
       _polyLines.createPolylines(
         atualPosition.latitude,
         atualPosition.longitude,
